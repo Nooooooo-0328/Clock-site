@@ -1,3 +1,8 @@
+//  Nooooooo  //
+//  改変や複製を一切禁止します。  //
+//  https://github.com/Nooooooo-0328/Clock-site  //
+
+
 const canvas = document.getElementById('clockCanvas');
 const digitalClock = document.getElementById('digitalClock');
 const settingsModal = document.getElementById('settingsModal');
