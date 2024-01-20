@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>時計</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="clockCanvas" width="600" height="300"></canvas>
+  <div id="digitalClock"></div>
+  <button onclick="toggleSettings()" class="settings-btn">設定</button>
+
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeSettings()">&times;</span>
+      <h2>設定</h2>
+      <label for="bgColor">背景色:</label>
+      <input type="color" id="bgColor" onchange="changeBackgroundColor()" value="#808080">
+
+      <label for="showDigitalClock">デジタル時計の表示:</label>
+      <input type="checkbox" id="showDigitalClock" onchange="toggleDigitalClock()" checked>
+
+      <label for="showDate">日付の表示 (アナログ時計のみ設定有効):</label>
+      <input type="checkbox" id="showDate" onchange="toggleDateDisplay()">
+      
+      <p class="version-info">0.0.1</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
