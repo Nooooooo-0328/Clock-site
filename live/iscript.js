@@ -38,10 +38,10 @@ function updateClock() {
         textContainer.classList.remove('fade-in');
         textContainer.classList.add('fade-out');
         setTimeout(function() {
-            var newDayOfWeek = dayOfWeekLabels[languageIndex][now.getDay()]; // 言語に応じた曜日のラベル
-            var newHours = now.getHours(); // 新しい言語に切り替わった時に時刻を更新
-            var newMinutes = now.getMinutes(); // 新しい言語に切り替わった時に分を更新
-            var newSeconds = now.getSeconds(); // 新しい言語に切り替わった時に秒を更新
+            var newDayOfWeek = dayOfWeekLabels[languageIndex][now.getDay()]; 
+            var newHours = now.getHours(); 
+            var newMinutes = now.getMinutes(); 
+            var newSeconds = now.getSeconds(); 
             newHours = newHours < 10 ? '0' + newHours : newHours;
             newMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
             newSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;

@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'DSEG7';
-  src: url('/live/DSEG7ModernMini-Regular.woff') format('truetype');
+  src: url('./DSEG7ModernMini-Regular.woff') format('truetype');
 }
 
 body {
