@@ -3,11 +3,13 @@
 //  https://github.com/Nooooooo-0328/Clock-site  //
 
 var languageIndex = 0;
-var languages = ["Nooooooo discord用 | ", " 😊| ", "😁 | "];
-var dayOfWeekLabels = [
-    ['日', '月', '火', '水', '木', '金', '土'], 
-    ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], 
-    ['일', '월', '화', '수', '목', '금', '토'] 
+var languages = [
+    "Noooooooの配信へようこそ！",
+    "必ず概要欄/配信メモをご覧ください。",
+    "【配信案内】",
+    "主は基本聞き専です。",
+    "主はあまりコメントを見ないため、反応が送れる場合があります。",
+    "X (Twitter): @Nooooooo_0328"
 ];
 var textContainer = document.getElementById('dayOfWeek');
 
@@ -16,9 +18,6 @@ function updateClock() {
     var hours = now.getHours();
     var minutes = now.getMinutes();
     var seconds = now.getSeconds();
-    var month = now.getMonth() + 1; 
-    var date = now.getDate(); 
-    var dayOfWeek = dayOfWeekLabels[languageIndex][now.getDay()]; 
 
     hours = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
@@ -27,18 +26,17 @@ function updateClock() {
 
     document.getElementById('clock').textContent = timeString;
 
-    if (languageIndex === 1) {
-        textContainer.textContent = languages[languageIndex] + ' ' + month + '/' + date + ' (' + dayOfWeek + ')' + ' (Japan Time)';
-    } else {
-        textContainer.textContent = languages[languageIndex] + ' ' + month + '/' + date + ' (' + dayOfWeek + ')';
-    }
+    var timezone = '';
+
+    textContainer.textContent = languages[languageIndex] + timezone;
 
     if (now.getSeconds() % 10 === 0) {
-        languageIndex = (languageIndex + 1) % languages.length;
         textContainer.classList.remove('fade-in');
         textContainer.classList.add('fade-out');
-        setTimeout(function() {
-            var newDayOfWeek = dayOfWeekLabels[languageIndex][now.getDay()]; 
+
+        textContainer.addEventListener('animationend', function() {
+            languageIndex = (languageIndex + 1) % languages.length;
+
             var newHours = now.getHours(); 
             var newMinutes = now.getMinutes(); 
             var newSeconds = now.getSeconds(); 
@@ -47,15 +45,13 @@ function updateClock() {
             newSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
             var newTimeString = newHours + ':' + newMinutes + ':' + newSeconds;
 
-            if (languageIndex === 1) {
-                textContainer.textContent = languages[languageIndex] + ' ' + month + '/' + date + ' (' + newDayOfWeek + ')' + ' (Japan Time)';
-            } else {
-                textContainer.textContent = languages[languageIndex] + ' ' + month + '/' + date + ' (' + newDayOfWeek + ')';
-            }
+            var newTimezone = '';
+
+            textContainer.textContent = languages[languageIndex] + newTimezone;
 
             textContainer.classList.remove('fade-out');
             textContainer.classList.add('fade-in');
-        }, 1000); 
+        }, { once: true });
     }
 }
 
